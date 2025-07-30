@@ -1,0 +1,430 @@
+@{
+    ViewData["Title"] = "Doctor Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div class="header-content">
+        <h2>Doctor Management</h2>
+        <p>Manage doctor profiles and specializations</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Doctor
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="search-filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" placeholder="Search doctors...">
+            </div>
+            <div class="filter-actions">
+                <select class="form-control">
+                    <option>All Specialties</option>
+                    <option>Dermatology</option>
+                    <option>Neurology</option>
+                    <option>Cardiology</option>
+                    <option>Dentistry</option>
+                    <option>Psychiatry</option>
+                </select>
+                <select class="form-control">
+                    <option>All Status</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="doctors-grid">
+            <!-- Doctor Card 1 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/8e44ad/ffffff?text=RE" alt="Dr. Ralph Edwards">
+                    </div>
+                    <div class="doctor-status active">Active</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Dr. Ralph Edwards</h5>
+                    <p class="doctor-specialty">Dermatologist</p>
+                    <p class="doctor-rate">$20/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">10+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">1,250</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.8 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Doctor Card 2 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/3498db/ffffff?text=RR" alt="Dr. Ronald Richards">
+                    </div>
+                    <div class="doctor-status active">Active</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Dr. Ronald Richards</h5>
+                    <p class="doctor-specialty">Neurologist</p>
+                    <p class="doctor-rate">$30/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">15+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">2,100</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.9 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Doctor Card 3 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/e74c3c/ffffff?text=AB" alt="Dr. Albert Boje">
+                    </div>
+                    <div class="doctor-status active">Active</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Dr. Albert Boje</h5>
+                    <p class="doctor-specialty">Dentist</p>
+                    <p class="doctor-rate">$32/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">8+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">950</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.7 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Doctor Card 4 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/f39c12/ffffff?text=FM" alt="Dr. Floyd Miles">
+                    </div>
+                    <div class="doctor-status inactive">Inactive</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Dr. Floyd Miles</h5>
+                    <p class="doctor-specialty">Psychiatrist</p>
+                    <p class="doctor-rate">$25/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">12+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">1,800</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.6 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Doctor Card 5 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/27ae60/ffffff?text=LA" alt="Dr. Leslie Alexander">
+                    </div>
+                    <div class="doctor-status active">Active</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Dr. Leslie Alexander</h5>
+                    <p class="doctor-specialty">General Practitioner</p>
+                    <p class="doctor-rate">$18/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">6+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">750</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.5 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+
+            <!-- Doctor Card 6 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="https://via.placeholder.com/80x80/9b59b6/ffffff?text=BC" alt="Prof. Brooklyn Crean">
+                    </div>
+                    <div class="doctor-status active">Active</div>
+                </div>
+                <div class="doctor-info">
+                    <h5 class="doctor-name">Prof. Brooklyn Crean</h5>
+                    <p class="doctor-specialty">Cardiologist</p>
+                    <p class="doctor-rate">$40/hour</p>
+                    <div class="doctor-stats">
+                        <div class="stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">20+ years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">3,200</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rating</span>
+                            <span class="stat-value">4.9 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-actions">
+                    <button class="btn btn-primary btn-sm">View Profile</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-content h2 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.header-content p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.search-filter-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.search-box input {
+    padding-left: 35px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-actions select {
+    min-width: 120px;
+}
+
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.doctor-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.doctor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.doctor-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.doctor-status.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.doctor-status.inactive {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.doctor-info {
+    margin-bottom: 20px;
+}
+
+.doctor-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.doctor-specialty {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.doctor-rate {
+    color: #8e44ad;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.doctor-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 11px;
+    color: #6c757d;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.doctor-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.doctor-actions .btn {
+    flex: 1;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+@media (max-width: 768px) {
+    .doctors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-actions {
+        justify-content: space-between;
+    }
+}
+</style>

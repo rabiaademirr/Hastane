@@ -1,0 +1,479 @@
+@{
+    ViewData["Title"] = "Clinic Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div class="header-content">
+        <h2>Clinic Management</h2>
+        <p>Manage clinic locations and facilities</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Clinic
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="search-filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" placeholder="Search clinics...">
+            </div>
+            <div class="filter-actions">
+                <select class="form-control">
+                    <option>All Locations</option>
+                    <option>Downtown</option>
+                    <option>Suburban</option>
+                    <option>Rural</option>
+                </select>
+                <select class="form-control">
+                    <option>All Status</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="clinics-grid">
+            <!-- Clinic Card 1 -->
+            <div class="clinic-card">
+                <div class="clinic-header">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200/8e44ad/ffffff?text=Main+Clinic" alt="Main Clinic">
+                    </div>
+                    <div class="clinic-status active">Active</div>
+                </div>
+                <div class="clinic-info">
+                    <h5 class="clinic-name">Main Medical Center</h5>
+                    <p class="clinic-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        123 Medical Drive, Downtown
+                    </p>
+                    <p class="clinic-phone">
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 123-4567
+                    </p>
+                    <div class="clinic-stats">
+                        <div class="stat">
+                            <span class="stat-label">Doctors</span>
+                            <span class="stat-value">15</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">2,500</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Departments</span>
+                            <span class="stat-value">8</span>
+                        </div>
+                    </div>
+                    <div class="clinic-departments">
+                        <span class="department-tag">Cardiology</span>
+                        <span class="department-tag">Dermatology</span>
+                        <span class="department-tag">Neurology</span>
+                        <span class="department-tag">Dentistry</span>
+                    </div>
+                </div>
+                <div class="clinic-actions">
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Manage Staff</button>
+                </div>
+            </div>
+
+            <!-- Clinic Card 2 -->
+            <div class="clinic-card">
+                <div class="clinic-header">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=North+Clinic" alt="North Clinic">
+                    </div>
+                    <div class="clinic-status active">Active</div>
+                </div>
+                <div class="clinic-info">
+                    <h5 class="clinic-name">North Medical Center</h5>
+                    <p class="clinic-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        456 Health Avenue, Suburban
+                    </p>
+                    <p class="clinic-phone">
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 234-5678
+                    </p>
+                    <div class="clinic-stats">
+                        <div class="stat">
+                            <span class="stat-label">Doctors</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">1,800</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Departments</span>
+                            <span class="stat-value">6</span>
+                        </div>
+                    </div>
+                    <div class="clinic-departments">
+                        <span class="department-tag">General Practice</span>
+                        <span class="department-tag">Pediatrics</span>
+                        <span class="department-tag">Orthopedics</span>
+                    </div>
+                </div>
+                <div class="clinic-actions">
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Manage Staff</button>
+                </div>
+            </div>
+
+            <!-- Clinic Card 3 -->
+            <div class="clinic-card">
+                <div class="clinic-header">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=South+Clinic" alt="South Clinic">
+                    </div>
+                    <div class="clinic-status active">Active</div>
+                </div>
+                <div class="clinic-info">
+                    <h5 class="clinic-name">South Medical Center</h5>
+                    <p class="clinic-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        789 Wellness Street, Rural
+                    </p>
+                    <p class="clinic-phone">
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 345-6789
+                    </p>
+                    <div class="clinic-stats">
+                        <div class="stat">
+                            <span class="stat-label">Doctors</span>
+                            <span class="stat-value">8</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">950</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Departments</span>
+                            <span class="stat-value">4</span>
+                        </div>
+                    </div>
+                    <div class="clinic-departments">
+                        <span class="department-tag">Family Medicine</span>
+                        <span class="department-tag">Emergency</span>
+                        <span class="department-tag">Laboratory</span>
+                    </div>
+                </div>
+                <div class="clinic-actions">
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Manage Staff</button>
+                </div>
+            </div>
+
+            <!-- Clinic Card 4 -->
+            <div class="clinic-card">
+                <div class="clinic-header">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=East+Clinic" alt="East Clinic">
+                    </div>
+                    <div class="clinic-status inactive">Inactive</div>
+                </div>
+                <div class="clinic-info">
+                    <h5 class="clinic-name">East Medical Center</h5>
+                    <p class="clinic-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        321 Care Boulevard, Downtown
+                    </p>
+                    <p class="clinic-phone">
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 456-7890
+                    </p>
+                    <div class="clinic-stats">
+                        <div class="stat">
+                            <span class="stat-label">Doctors</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Departments</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <div class="clinic-departments">
+                        <span class="department-tag inactive">Under Renovation</span>
+                    </div>
+                </div>
+                <div class="clinic-actions">
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Manage Staff</button>
+                </div>
+            </div>
+
+            <!-- Clinic Card 5 -->
+            <div class="clinic-card">
+                <div class="clinic-header">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200/27ae60/ffffff?text=West+Clinic" alt="West Clinic">
+                    </div>
+                    <div class="clinic-status active">Active</div>
+                </div>
+                <div class="clinic-info">
+                    <h5 class="clinic-name">West Medical Center</h5>
+                    <p class="clinic-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        654 Health Road, Suburban
+                    </p>
+                    <p class="clinic-phone">
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 567-8901
+                    </p>
+                    <div class="clinic-stats">
+                        <div class="stat">
+                            <span class="stat-label">Doctors</span>
+                            <span class="stat-value">10</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Patients</span>
+                            <span class="stat-value">1,200</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Departments</span>
+                            <span class="stat-value">5</span>
+                        </div>
+                    </div>
+                    <div class="clinic-departments">
+                        <span class="department-tag">Internal Medicine</span>
+                        <span class="department-tag">Gynecology</span>
+                        <span class="department-tag">Radiology</span>
+                    </div>
+                </div>
+                <div class="clinic-actions">
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                    <button class="btn btn-outline-secondary btn-sm">Manage Staff</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-content h2 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.header-content p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.search-filter-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.search-box input {
+    padding-left: 35px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-actions select {
+    min-width: 120px;
+}
+
+.clinics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.clinic-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.clinic-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.clinic-header {
+    position: relative;
+}
+
+.clinic-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.clinic-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+.clinic-status.active {
+    background-color: #28a745;
+}
+
+.clinic-status.inactive {
+    background-color: #dc3545;
+}
+
+.clinic-info {
+    padding: 20px;
+}
+
+.clinic-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.clinic-location,
+.clinic-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.clinic-location i,
+.clinic-phone i {
+    color: #8e44ad;
+    width: 16px;
+}
+
+.clinic-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.clinic-departments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.department-tag {
+    padding: 4px 12px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.department-tag.inactive {
+    background-color: #f5f5f5;
+    color: #6c757d;
+}
+
+.clinic-actions {
+    display: flex;
+    gap: 8px;
+    padding: 0 20px 20px;
+}
+
+.clinic-actions .btn {
+    flex: 1;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+@media (max-width: 768px) {
+    .clinics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-actions {
+        justify-content: space-between;
+    }
+    
+    .clinic-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>

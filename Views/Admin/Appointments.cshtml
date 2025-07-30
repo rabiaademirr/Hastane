@@ -1,0 +1,525 @@
+@{
+    ViewData["Title"] = "Appointment Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header">
+    <div class="header-content">
+        <h2>Appointment Management</h2>
+        <p>Manage and schedule patient appointments</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn btn-primary">
+            <i class="fas fa-plus"></i> New Appointment
+        </button>
+    </div>
+</div>
+
+<div class="appointments-container">
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Appointment Calendar</h5>
+                <div class="calendar-nav">
+                    <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="current-month">January 2025</span>
+                    <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="calendar-grid">
+                    <div class="calendar-weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="calendar-days" id="calendarDays">
+                        <!-- Calendar days will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointments List Section -->
+    <div class="appointments-list-section">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Today's Appointments</h5>
+                <div class="filter-actions">
+                    <select class="form-control">
+                        <option>All Status</option>
+                        <option>Confirmed</option>
+                        <option>Pending</option>
+                        <option>Cancelled</option>
+                    </select>
+                    <button class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="appointments-list">
+                    <!-- Appointment 1 -->
+                    <div class="appointment-item confirmed">
+                        <div class="appointment-time">
+                            <div class="time">09:00 AM</div>
+                            <div class="duration">30 min</div>
+                        </div>
+                        <div class="appointment-info">
+                            <div class="patient-info">
+                                <img src="https://via.placeholder.com/40x40/8e44ad/ffffff?text=JS" alt="John Smith" class="patient-avatar">
+                                <div>
+                                    <h6 class="patient-name">John Smith</h6>
+                                    <p class="doctor-name">Dr. Ralph Edwards - Dermatology</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="badge badge-success">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 2 -->
+                    <div class="appointment-item pending">
+                        <div class="appointment-time">
+                            <div class="time">10:30 AM</div>
+                            <div class="duration">45 min</div>
+                        </div>
+                        <div class="appointment-info">
+                            <div class="patient-info">
+                                <img src="https://via.placeholder.com/40x40/3498db/ffffff?text=MJ" alt="Mary Johnson" class="patient-avatar">
+                                <div>
+                                    <h6 class="patient-name">Mary Johnson</h6>
+                                    <p class="doctor-name">Dr. Ronald Richards - Neurology</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="badge badge-warning">Pending</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 3 -->
+                    <div class="appointment-item confirmed">
+                        <div class="appointment-time">
+                            <div class="time">02:00 PM</div>
+                            <div class="duration">60 min</div>
+                        </div>
+                        <div class="appointment-info">
+                            <div class="patient-info">
+                                <img src="https://via.placeholder.com/40x40/e74c3c/ffffff?text=SB" alt="Sarah Brown" class="patient-avatar">
+                                <div>
+                                    <h6 class="patient-name">Sarah Brown</h6>
+                                    <p class="doctor-name">Dr. Albert Boje - Dentistry</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="badge badge-success">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 4 -->
+                    <div class="appointment-item cancelled">
+                        <div class="appointment-time">
+                            <div class="time">03:30 PM</div>
+                            <div class="duration">30 min</div>
+                        </div>
+                        <div class="appointment-info">
+                            <div class="patient-info">
+                                <img src="https://via.placeholder.com/40x40/f39c12/ffffff?text=MD" alt="Michael Davis" class="patient-avatar">
+                                <div>
+                                    <h6 class="patient-name">Michael Davis</h6>
+                                    <p class="doctor-name">Dr. Leslie Alexander - General Practice</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="badge badge-danger">Cancelled</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 5 -->
+                    <div class="appointment-item confirmed">
+                        <div class="appointment-time">
+                            <div class="time">04:15 PM</div>
+                            <div class="duration">45 min</div>
+                        </div>
+                        <div class="appointment-info">
+                            <div class="patient-info">
+                                <img src="https://via.placeholder.com/40x40/27ae60/ffffff?text=DW" alt="David Wilson" class="patient-avatar">
+                                <div>
+                                    <h6 class="patient-name">David Wilson</h6>
+                                    <p class="doctor-name">Prof. Brooklyn Crean - Cardiology</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="badge badge-success">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-sm btn-outline-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" title="Cancel">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-content h2 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.header-content p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.appointments-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Calendar Styles */
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.current-month {
+    font-weight: 600;
+    color: #2c3e50;
+    min-width: 120px;
+    text-align: center;
+}
+
+.calendar-grid {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.calendar-weekdays > div {
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 1px solid #e9ecef;
+}
+
+.calendar-weekdays > div:last-child {
+    border-right: none;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 60px;
+}
+
+.calendar-day:hover {
+    background-color: #f8f9fa;
+}
+
+.calendar-day.selected {
+    background-color: #8e44ad;
+    color: white;
+}
+
+.calendar-day.has-appointment {
+    background-color: #e8f5e8;
+    font-weight: 600;
+}
+
+.calendar-day.has-appointment::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #28a745;
+    border-radius: 50%;
+}
+
+.calendar-day.today {
+    background-color: #fff3cd;
+    font-weight: 600;
+}
+
+/* Appointments List Styles */
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-actions select {
+    min-width: 120px;
+}
+
+.appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.appointment-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.appointment-item.confirmed {
+    border-left: 4px solid #28a745;
+}
+
+.appointment-item.pending {
+    border-left: 4px solid #ffc107;
+}
+
+.appointment-item.cancelled {
+    border-left: 4px solid #dc3545;
+    opacity: 0.7;
+}
+
+.appointment-time {
+    text-align: center;
+    margin-right: 20px;
+    min-width: 80px;
+}
+
+.time {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.duration {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.appointment-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.patient-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.patient-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 2px;
+}
+
+.doctor-name {
+    font-size: 12px;
+    color: #6c757d;
+    margin: 0;
+}
+
+.appointment-status {
+    margin-left: 15px;
+}
+
+.appointment-actions {
+    display: flex;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.appointment-actions .btn {
+    padding: 5px 8px;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .appointments-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .appointment-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .appointment-status {
+        margin-left: 0;
+    }
+    
+    .appointment-actions {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Generate calendar days
+    const calendarDays = document.getElementById('calendarDays');
+    const daysInMonth = 31;
+    const today = new Date().getDate();
+    
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = i;
+        
+        // Mark today
+        if (i === today) {
+            dayElement.classList.add('today');
+        }
+        
+        // Mark days with appointments (example: 15th, 22nd)
+        if ([15, 22].includes(i)) {
+            dayElement.classList.add('has-appointment');
+        }
+        
+        // Mark selected day (example: 15th)
+        if (i === 15) {
+            dayElement.classList.add('selected');
+        }
+        
+        calendarDays.appendChild(dayElement);
+    }
+    
+    // Calendar day click handler
+    const calendarDaysElements = document.querySelectorAll('.calendar-day');
+    calendarDaysElements.forEach(day => {
+        day.addEventListener('click', function() {
+            calendarDaysElements.forEach(d => d.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+    
+    // Appointment item click handler
+    const appointmentItems = document.querySelectorAll('.appointment-item');
+    appointmentItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (!e.target.closest('.appointment-actions')) {
+                // Handle appointment selection
+                appointmentItems.forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+            }
+        });
+    });
+});
+</script>

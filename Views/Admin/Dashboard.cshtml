@@ -1,0 +1,695 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="dashboard-container">
+    <!-- Left Panel: Appointment Management -->
+    <div class="panel appointment-panel">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Appointment Management</h5>
+            </div>
+            <div class="card-body">
+                <!-- Calendar Section -->
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <h6>June 2025</h6>
+                        <div class="calendar-nav">
+                            <button class="btn-icon" title="Previous Month">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="btn-icon" title="Next Month">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendar Grid -->
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        <div class="calendar-days">
+                            <!-- Calendar days will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selected Date & Time Slots -->
+                <div class="time-slots-section">
+                    <h6>Wed, 4 June 2025</h6>
+                    <div class="time-slots-grid">
+                        <button class="time-slot available">08:00 AM</button>
+                        <button class="time-slot available">09:00 AM</button>
+                        <button class="time-slot available">10:00 AM</button>
+                        <button class="time-slot unavailable">11:00 AM</button>
+                        <button class="time-slot available">12:30 PM</button>
+                        <button class="time-slot available">01:30 PM</button>
+                        <button class="time-slot available">02:30 PM</button>
+                        <button class="time-slot available">03:30 PM</button>
+                        <button class="time-slot available">04:30 PM</button>
+                        <button class="time-slot available">05:30 PM</button>
+                    </div>
+                </div>
+
+                <!-- Patient Concerns -->
+                <div class="patient-concerns">
+                    <h6>Patient Concerns</h6>
+                    <textarea class="form-control" rows="4" placeholder="Enter patient concerns...">Red, itchy skin for a week. Worse after sun.</textarea>
+                    <div class="symptoms-section">
+                        <h6>Symptoms:</h6>
+                        <ul class="symptoms-list">
+                            <li>Flaky patches</li>
+                            <li>Mild burning</li>
+                            <li>Skin sensitivity</li>
+                        </ul>
+                    </div>
+                    <div class="word-count">17 words</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Panel: Doctor List -->
+    <div class="panel doctor-list-panel">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Doctor List</h5>
+                <div class="search-filter">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="form-control" placeholder="Search Doctor">
+                    </div>
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="doctor-grid">
+                    <!-- Doctor Card 1 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/8e44ad/ffffff?text=RE" alt="Dr. Ralph Edwards">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Dr. Ralph Edwards</h6>
+                            <p class="doctor-specialty">Dermatologist</p>
+                            <p class="doctor-rate">$20/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card 2 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/3498db/ffffff?text=RR" alt="Dr. Ronald Richards">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Dr. Ronald Richards</h6>
+                            <p class="doctor-specialty">Neurologist</p>
+                            <p class="doctor-rate">$30/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card 3 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/e74c3c/ffffff?text=AB" alt="Dr. Albert Boje">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Dr. Albert Boje</h6>
+                            <p class="doctor-specialty">Dentist</p>
+                            <p class="doctor-rate">$32/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card 4 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/f39c12/ffffff?text=FM" alt="Dr. Floyd Miles">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Dr. Floyd Miles</h6>
+                            <p class="doctor-specialty">Psychiatrist</p>
+                            <p class="doctor-rate">$25/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card 5 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/27ae60/ffffff?text=LA" alt="Dr. Leslie Alexander">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Dr. Leslie Alexander</h6>
+                            <p class="doctor-specialty">General Practitioner</p>
+                            <p class="doctor-rate">$18/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card 6 -->
+                    <div class="doctor-card">
+                        <div class="doctor-avatar">
+                            <img src="https://via.placeholder.com/60x60/9b59b6/ffffff?text=BC" alt="Prof. Brooklyn Crean">
+                        </div>
+                        <div class="doctor-info">
+                            <h6 class="doctor-name">Prof. Brooklyn Crean</h6>
+                            <p class="doctor-specialty">Cardiologist</p>
+                            <p class="doctor-rate">$40/hour</p>
+                        </div>
+                        <div class="doctor-actions">
+                            <button class="btn btn-primary btn-sm">Book Now</button>
+                            <button class="btn btn-outline-primary btn-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel: Doctor Details -->
+    <div class="panel doctor-detail-panel">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Doctor Details</h5>
+                <button class="btn-icon" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <!-- Doctor Profile -->
+                <div class="doctor-profile">
+                    <div class="doctor-avatar-large">
+                        <img src="https://via.placeholder.com/120x120/8e44ad/ffffff?text=RE" alt="Dr. Ralph Edwards">
+                    </div>
+                    <div class="doctor-info-large">
+                        <h4 class="doctor-name-large">Dr. Ralph Edwards</h4>
+                        <p class="doctor-specialty-large">Dermatologist</p>
+                        <p class="doctor-rate-large">$20/hour</p>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="experience-section">
+                    <div class="section-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h6>Experience</h6>
+                    </div>
+                    <p>Over 10 years in clinical dermatology, treating a wide range of conditions from eczema and acne to autoimmune skin disorders.</p>
+                </div>
+
+                <!-- Speciality Section -->
+                <div class="speciality-section">
+                    <div class="section-header">
+                        <i class="fas fa-leaf"></i>
+                        <h6>Speciality</h6>
+                    </div>
+                    <ul class="speciality-list">
+                        <li>General Dermatology</li>
+                        <li>Skin Allergy Treatment</li>
+                        <li>Acne & Scarring Care</li>
+                    </ul>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="reviews-section">
+                    <h6>Reviews</h6>
+                    <div class="review-carousel">
+                        <div class="review-item">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Dr. Edwards was clear, caring, and professional. My skin improved quickly thanks to his treatment plan. Highly recommended!</p>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="btn-icon" title="Previous">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="btn-icon" title="Next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary">Book Now</button>
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-comments"></i> Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Dashboard Specific Styles */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    height: calc(100vh - 120px);
+}
+
+.panel {
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Calendar Styles */
+.calendar-section {
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 5px;
+}
+
+.calendar-grid {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.calendar-weekdays > div {
+    padding: 8px;
+    text-align: center;
+    border-right: 1px solid #e9ecef;
+}
+
+.calendar-weekdays > div:last-child {
+    border-right: none;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+    padding: 8px;
+    text-align: center;
+    border-right: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: #f8f9fa;
+}
+
+.calendar-day.selected {
+    background-color: #8e44ad;
+    color: white;
+}
+
+.calendar-day.unavailable {
+    color: #6c757d;
+    background-color: #f8f9fa;
+}
+
+.calendar-day.sunday {
+    color: #dc3545;
+}
+
+/* Time Slots Styles */
+.time-slots-section {
+    margin-bottom: 20px;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.time-slot {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.time-slot:hover {
+    border-color: #8e44ad;
+}
+
+.time-slot.available {
+    color: #495057;
+}
+
+.time-slot.unavailable {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+/* Patient Concerns Styles */
+.patient-concerns {
+    position: relative;
+}
+
+.symptoms-section {
+    margin-top: 15px;
+}
+
+.symptoms-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.symptoms-list li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.symptoms-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #8e44ad;
+}
+
+.word-count {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+/* Search and Filter Styles */
+.search-filter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.search-box input {
+    padding-left: 35px;
+}
+
+/* Doctor Grid Styles */
+.doctor-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.doctor-avatar {
+    margin-right: 15px;
+}
+
+.doctor-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-info {
+    flex: 1;
+}
+
+.doctor-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.doctor-specialty {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.doctor-rate {
+    color: #8e44ad;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.doctor-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Doctor Detail Styles */
+.doctor-profile {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.doctor-avatar-large {
+    margin-bottom: 15px;
+}
+
+.doctor-avatar-large img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-name-large {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.doctor-specialty-large {
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.doctor-rate-large {
+    color: #8e44ad;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.section-header i {
+    color: #8e44ad;
+}
+
+.speciality-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.speciality-list li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.speciality-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #8e44ad;
+}
+
+.reviews-section {
+    margin: 25px 0;
+}
+
+.review-carousel {
+    position: relative;
+}
+
+.review-item {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .doctor-detail-panel {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+
+<script>
+// Calendar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Generate calendar days
+    const calendarDays = document.querySelector('.calendar-days');
+    const daysInMonth = 31;
+    
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = i;
+        
+        // Mark Sundays
+        if (i % 7 === 1) {
+            dayElement.classList.add('sunday');
+        }
+        
+        // Mark selected day (4th)
+        if (i === 4) {
+            dayElement.classList.add('selected');
+        }
+        
+        // Mark unavailable days
+        if ([17, 18, 24, 25].includes(i)) {
+            dayElement.classList.add('unavailable');
+        }
+        
+        calendarDays.appendChild(dayElement);
+    }
+    
+    // Time slot selection
+    const timeSlots = document.querySelectorAll('.time-slot.available');
+    timeSlots.forEach(slot => {
+        slot.addEventListener('click', function() {
+            timeSlots.forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+    
+    // Doctor card selection
+    const doctorCards = document.querySelectorAll('.doctor-card');
+    doctorCards.forEach(card => {
+        card.addEventListener('click', function() {
+            doctorCards.forEach(c => c.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+});
+</script>
