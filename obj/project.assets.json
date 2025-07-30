@@ -8,25 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/Users/rabiademir/.nuget/packages/": {}
+    "/home/ubuntu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rabiademir/Desktop/Hastane/HastaneRandevuSistemi/HastaneRandevuSistemi.csproj",
+      "projectUniqueName": "/workspace/HastaneRandevuSistemi.csproj",
       "projectName": "HastaneRandevuSistemi",
-      "projectPath": "/Users/rabiademir/Desktop/Hastane/HastaneRandevuSistemi/HastaneRandevuSistemi.csproj",
-      "packagesPath": "/Users/rabiademir/.nuget/packages/",
-      "outputPath": "/Users/rabiademir/Desktop/Hastane/HastaneRandevuSistemi/obj/",
+      "projectPath": "/workspace/HastaneRandevuSistemi.csproj",
+      "packagesPath": "/home/ubuntu/.nuget/packages/",
+      "outputPath": "/workspace/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/rabiademir/.nuget/NuGet/NuGet.Config"
+        "/home/ubuntu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -68,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
