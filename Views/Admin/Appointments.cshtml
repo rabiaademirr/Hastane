@@ -1,0 +1,173 @@
+@model List<object>
+@{
+    ViewData["Title"] = "Manage Appointments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Manage Appointments</h2>
+    <div class="d-flex gap-2">
+        <select class="form-control" style="width: auto;">
+            <option value="">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <input type="date" class="form-control" style="width: auto;">
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Concerns</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (dynamic appointment in Model)
+                        {
+                            <tr>
+                                <td>@appointment.PatientName</td>
+                                <td>@appointment.DoctorName</td>
+                                <td>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</td>
+                                <td>@appointment.TimeSlot</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(appointment.PatientConcerns))
+                                    {
+                                        <span title="@appointment.PatientConcerns">
+                                            @(appointment.PatientConcerns.Length > 50 ? appointment.PatientConcerns.Substring(0, 50) + "..." : appointment.PatientConcerns)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No concerns noted</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge badge-@(appointment.Status.ToLower())">
+                                        @appointment.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-sm btn-outline dropdown-toggle" data-bs-toggle="dropdown">
+                                            Actions
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="updateStatus(@appointment.Id, 'Confirmed')">Confirm</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateStatus(@appointment.Id, 'Completed')">Mark Complete</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateStatus(@appointment.Id, 'Cancelled')">Cancel</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#" onclick="viewDetails(@appointment.Id)">View Details</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                No appointments found
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Appointment Details Modal -->
+<div class="modal fade" id="appointmentDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Patient Information</h6>
+                        <p><strong>Name:</strong> <span id="patientName"></span></p>
+                        <p><strong>Email:</strong> <span id="patientEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="patientPhone"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Doctor Information</h6>
+                        <p><strong>Name:</strong> <span id="doctorName"></span></p>
+                        <p><strong>Specialty:</strong> <span id="doctorSpecialty"></span></p>
+                        <p><strong>Fee:</strong> <span id="doctorFee"></span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Appointment Details</h6>
+                        <p><strong>Date:</strong> <span id="appointmentDate"></span></p>
+                        <p><strong>Time:</strong> <span id="appointmentTime"></span></p>
+                        <p><strong>Status:</strong> <span id="appointmentStatus"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Patient Concerns</h6>
+                        <p id="patientConcerns"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editAppointment()">Edit Appointment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateStatus(appointmentId, status) {
+    if (confirm('Are you sure you want to update the status to ' + status + '?')) {
+        fetch('/Admin/UpdateAppointmentStatus', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'appointmentId=' + appointmentId + '&status=' + status
+        }).then(() => {
+            location.reload();
+        });
+    }
+}
+
+function viewDetails(appointmentId) {
+    // Implementation for viewing appointment details
+    document.getElementById('patientName').textContent = 'John Doe';
+    document.getElementById('patientEmail').textContent = 'john@example.com';
+    document.getElementById('patientPhone').textContent = '+1234567890';
+    document.getElementById('doctorName').textContent = 'Dr. Ralph Edwards';
+    document.getElementById('doctorSpecialty').textContent = 'Dermatologist';
+    document.getElementById('doctorFee').textContent = '$20/hour';
+    document.getElementById('appointmentDate').textContent = 'June 4, 2025';
+    document.getElementById('appointmentTime').textContent = '10:00 AM';
+    document.getElementById('appointmentStatus').textContent = 'Pending';
+    document.getElementById('patientConcerns').textContent = 'Red, itchy skin for a week. Worse after sun.';
+    
+    new bootstrap.Modal(document.getElementById('appointmentDetailsModal')).show();
+}
+
+function editAppointment() {
+    // Implementation for editing appointment
+    alert('Edit appointment functionality');
+}
+</script>

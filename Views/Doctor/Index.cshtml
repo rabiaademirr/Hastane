@@ -1,0 +1,185 @@
+@{
+    ViewData["Title"] = "Doctor Dashboard";
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Total Appointments</div>
+    </div>
+    <div class="stat-card success">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Today's Appointments</div>
+    </div>
+    <div class="stat-card warning">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Completed This Week</div>
+    </div>
+    <div class="stat-card danger">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Pending Reviews</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Today's Schedule</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Patient</th>
+                                <th>Concerns</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 AM</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/40x40" alt="John Doe" class="rounded-circle me-2">
+                                        <div>
+                                            <div class="fw-bold">John Doe</div>
+                                            <small class="text-muted">+1234567890</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Red, itchy skin for a week</td>
+                                <td>
+                                    <span class="badge badge-pending">Pending</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">Start</button>
+                                    <button class="btn btn-sm btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>09:00 AM</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/40x40" alt="Jane Smith" class="rounded-circle me-2">
+                                        <div>
+                                            <div class="fw-bold">Jane Smith</div>
+                                            <small class="text-muted">+1234567891</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Follow-up for acne treatment</td>
+                                <td>
+                                    <span class="badge badge-confirmed">Confirmed</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">Start</button>
+                                    <button class="btn btn-sm btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10:00 AM</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/40x40" alt="Mike Johnson" class="rounded-circle me-2">
+                                        <div>
+                                            <div class="fw-bold">Mike Johnson</div>
+                                            <small class="text-muted">+1234567892</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Skin allergy consultation</td>
+                                <td>
+                                    <span class="badge badge-completed">Completed</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline">View Report</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/Doctor/MyAppointments" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        View All Appointments
+                    </a>
+                    <a href="/Doctor/Schedule" class="btn btn-success">
+                        <i class="fas fa-calendar-plus"></i>
+                        Manage Schedule
+                    </a>
+                    <a href="/Doctor/Patients" class="btn btn-warning">
+                        <i class="fas fa-users"></i>
+                        My Patients
+                    </a>
+                    <a href="/Doctor/Profile" class="btn btn-outline">
+                        <i class="fas fa-user-md"></i>
+                        My Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title">Next Appointment</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="https://via.placeholder.com/80x80" alt="John Doe" class="rounded-circle mb-3">
+                    <h6>John Doe</h6>
+                    <p class="text-muted mb-2">08:00 AM</p>
+                    <p class="mb-3"><strong>Concerns:</strong> Red, itchy skin for a week</p>
+                    <div class="d-grid">
+                        <button class="btn btn-sm btn-success">Start Consultation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title">Recent Patients</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="https://via.placeholder.com/40x40" alt="Jane Smith" class="rounded-circle me-2">
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">Jane Smith</div>
+                        <small class="text-muted">Last visit: 2 days ago</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline">View</button>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <img src="https://via.placeholder.com/40x40" alt="Mike Johnson" class="rounded-circle me-2">
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">Mike Johnson</div>
+                        <small class="text-muted">Last visit: 1 week ago</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline">View</button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <img src="https://via.placeholder.com/40x40" alt="Sarah Wilson" class="rounded-circle me-2">
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">Sarah Wilson</div>
+                        <small class="text-muted">Last visit: 2 weeks ago</small>
+                    </div>
+                    <button class="btn btn-sm btn-outline">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

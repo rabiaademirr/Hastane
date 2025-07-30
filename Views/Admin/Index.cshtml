@@ -1,0 +1,94 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">@Model.TotalPatients</div>
+        <div class="stat-label">Total Patients</div>
+    </div>
+    <div class="stat-card success">
+        <div class="stat-number">@Model.TotalDoctors</div>
+        <div class="stat-label">Total Doctors</div>
+    </div>
+    <div class="stat-card warning">
+        <div class="stat-number">@Model.TotalAppointments</div>
+        <div class="stat-label">Total Appointments</div>
+    </div>
+    <div class="stat-card danger">
+        <div class="stat-number">@Model.PendingAppointments</div>
+        <div class="stat-label">Pending Appointments</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Recent Appointments</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentAppointments.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var appointment in Model.RecentAppointments)
+                                {
+                                    <tr>
+                                        <td>@appointment.Patient?.FullName</td>
+                                        <td>@appointment.Doctor?.FullName</td>
+                                        <td>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</td>
+                                        <td>@appointment.TimeSlot</td>
+                                        <td>
+                                            <span class="badge badge-@(appointment.Status.ToLower())">
+                                                @appointment.Status
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center text-muted">No recent appointments</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/Admin/Patients" class="btn btn-primary">
+                        <i class="fas fa-users"></i>
+                        Manage Patients
+                    </a>
+                    <a href="/Admin/Doctors" class="btn btn-success">
+                        <i class="fas fa-user-md"></i>
+                        Manage Doctors
+                    </a>
+                    <a href="/Admin/Appointments" class="btn btn-warning">
+                        <i class="fas fa-calendar-check"></i>
+                        View Appointments
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
