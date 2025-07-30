@@ -1,0 +1,133 @@
+@using System.Linq
+@model HastaneRandevuSistemi.Models.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+
+    <div class="row">
+        <!-- Toplam Randevu Sayısı -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Toplam Randevu</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalAppointments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bugünkü Randevular -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Bugünkü Randevular</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TodayAppointments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toplam Doktor -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Toplam Doktor</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalDoctors</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-md fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toplam Hasta -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Toplam Hasta</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalPatients</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Randevular -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Son Randevular</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.RecentAppointments != null && Model.RecentAppointments.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Hasta Adı</th>
+                                        <th>Doktor</th>
+                                        <th>Tarih</th>
+                                        <th>Saat</th>
+                                        <th>Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var appointment in Model.RecentAppointments)
+                                    {
+                                        <tr>
+                                            <td>@appointment.PatientName</td>
+                                            <td>@appointment.DoctorName</td>
+                                            <td>@appointment.AppointmentDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@appointment.AppointmentTime</td>
+                                            <td>
+                                                <span class="badge badge-@(appointment.Status == "Confirmed" ? "success" : appointment.Status == "Pending" ? "warning" : "danger")">
+                                                    @appointment.Status
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Henüz randevu bulunmuyor.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
