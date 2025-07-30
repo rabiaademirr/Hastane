@@ -1,0 +1,211 @@
+@model HastaneRandevuSistemi.Models.Appointment
+@{
+    ViewData["Title"] = "Book Appointment";
+    var doctors = ViewBag.Doctors as List<HastaneRandevuSistemi.Models.Doctor>;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Booking Appointment</h5>
+            </div>
+            <div class="card-body">
+                <!-- Calendar -->
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h6 class="mb-0">June 2025</h6>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day weekend">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day selected">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day weekend">7</div>
+                        <div class="calendar-day weekend">8</div>
+                        <div class="calendar-day">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day weekend">14</div>
+                        <div class="calendar-day weekend">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day weekend">22</div>
+                        <div class="calendar-day weekend">29</div>
+                        <div class="calendar-day">30</div>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <h6>Wed, 4 June 2025</h6>
+                    <div class="time-slots">
+                        <div class="time-slot">08:00 AM</div>
+                        <div class="time-slot">09:00 AM</div>
+                        <div class="time-slot selected">10:00 AM</div>
+                        <div class="time-slot disabled">11:00 AM</div>
+                        <div class="time-slot">12:30 PM</div>
+                        <div class="time-slot">01:30 PM</div>
+                        <div class="time-slot">02:30 PM</div>
+                        <div class="time-slot">03:30 PM</div>
+                        <div class="time-slot">04:30 PM</div>
+                        <div class="time-slot">05:30 PM</div>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <label class="form-label">Patient Concerns</label>
+                    <textarea class="form-control" rows="4" placeholder="Describe your symptoms or concerns...">Red, itchy skin for a week. Worse after sun.</textarea>
+                    <div class="text-right mt-1">
+                        <small class="text-muted">17 words</small>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <label class="form-label">Symptoms</label>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="badge badge-outline">Flaky patches</span>
+                        <span class="badge badge-outline">Mild burning</span>
+                        <span class="badge badge-outline">Skin sensitivity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Doctor List</h5>
+                <div class="d-flex gap-2">
+                    <input type="text" class="form-control" placeholder="Search Doctor">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" style="max-height: 600px; overflow-y: auto;">
+                @if (doctors != null)
+                {
+                    @foreach (var doctor in doctors)
+                    {
+                        <div class="doctor-card mb-3">
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60x60" alt="@doctor.FullName" class="rounded-circle me-3">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">@doctor.FullName</h6>
+                                    <p class="text-muted mb-1">@doctor.Specialty</p>
+                                    <p class="text-success mb-2">$@doctor.ConsultationFee/hour</p>
+                                </div>
+                                <div class="d-flex flex-column gap-1">
+                                    <button class="btn btn-sm btn-primary">Book Now</button>
+                                    <button class="btn btn-sm btn-outline">Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-muted">No doctors available</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Detail Doctor</h5>
+                <button class="btn-close"></button>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img src="https://via.placeholder.com/120x120" alt="Dr. Ralph Edwards" class="rounded-circle mb-3">
+                    <h5>Dr. Ralph Edwards</h5>
+                    <p class="text-muted">Dermatologist</p>
+                    <p class="text-success fw-bold">$20/hour</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6><i class="fas fa-graduation-cap me-2"></i>Experience</h6>
+                    <p class="text-muted">Over 10 years in clinical dermatology, treating a wide range of conditions from eczema and acne to autoimmune skin disorders.</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6><i class="fas fa-stethoscope me-2"></i>Speciality</h6>
+                    <ul class="list-unstyled">
+                        <li>• General Dermatology</li>
+                        <li>• Skin Allergy Treatment</li>
+                        <li>• Acne & Scarring Care</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-3">
+                    <h6><i class="fas fa-star me-2"></i>Reviews</h6>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="text-warning me-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-muted">4.0</span>
+                    </div>
+                    <p class="text-muted small">"Dr. Edwards was clear, caring, and professional. My skin improved quickly thanks to his treatment plan. Highly recommended!"</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted small">"He rea explain reassur visit."</span>
+                        <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary">Book Now</button>
+                    <button class="btn btn-outline">Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.badge-outline {
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    color: #374151;
+}
+</style>
+
+<script>
+// Calendar functionality
+document.querySelectorAll('.calendar-day').forEach(day => {
+    day.addEventListener('click', function() {
+        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+        this.classList.add('selected');
+    });
+});
+
+// Time slot functionality
+document.querySelectorAll('.time-slot').forEach(slot => {
+    slot.addEventListener('click', function() {
+        if (!this.classList.contains('disabled')) {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+        }
+    });
+});
+</script>

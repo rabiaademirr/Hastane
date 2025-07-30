@@ -1,0 +1,222 @@
+@model List<object>
+@{
+    ViewData["Title"] = "My Appointments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My Appointments</h2>
+    <div class="d-flex gap-2">
+        <select class="form-control" style="width: auto;">
+            <option value="">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <input type="date" class="form-control" style="width: auto;">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Appointment Schedule</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>Patient</th>
+                                    <th>Contact</th>
+                                    <th>Concerns</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (dynamic appointment in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <div class="fw-bold">@appointment.AppointmentDate.ToString("MMM dd, yyyy")</div>
+                                                <small class="text-muted">@appointment.TimeSlot</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/40x40" alt="@appointment.PatientName" class="rounded-circle me-2">
+                                                <div>
+                                                    <div class="fw-bold">@appointment.PatientName</div>
+                                                    <small class="text-muted">Age: 35</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div>@appointment.PatientEmail</div>
+                                                <small class="text-muted">@appointment.PatientPhone</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(appointment.PatientConcerns))
+                                            {
+                                                <span title="@appointment.PatientConcerns">
+                                                    @(appointment.PatientConcerns.Length > 50 ? appointment.PatientConcerns.Substring(0, 50) + "..." : appointment.PatientConcerns)
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">No concerns noted</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-@(appointment.Status.ToLower())">
+                                                @appointment.Status
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline dropdown-toggle" data-bs-toggle="dropdown">
+                                                    Actions
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    @if (appointment.Status == "Pending")
+                                                    {
+                                                        <li><a class="dropdown-item" href="#" onclick="updateStatus(@appointment.Id, 'Confirmed')">Confirm</a></li>
+                                                    }
+                                                    @if (appointment.Status == "Confirmed")
+                                                    {
+                                                        <li><a class="dropdown-item" href="#" onclick="updateStatus(@appointment.Id, 'Completed')">Mark Complete</a></li>
+                                                    }
+                                                    <li><a class="dropdown-item" href="#" onclick="viewDetails(@appointment.Id)">View Details</a></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="startConsultation(@appointment.Id)">Start Consultation</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="reschedule(@appointment.Id)">Reschedule</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="#" onclick="cancelAppointment(@appointment.Id)">Cancel</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No appointments found</h5>
+                        <p class="text-muted">You don't have any appointments scheduled.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Appointment Details Modal -->
+<div class="modal fade" id="appointmentDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Patient Information</h6>
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://via.placeholder.com/60x60" alt="Patient" class="rounded-circle me-3">
+                            <div>
+                                <h6 class="mb-1">John Doe</h6>
+                                <p class="text-muted mb-1">Age: 35 | Gender: Male</p>
+                                <p class="text-muted mb-0">Patient ID: P001</p>
+                            </div>
+                        </div>
+                        <p><strong>Email:</strong> john@example.com</p>
+                        <p><strong>Phone:</strong> +1234567890</p>
+                        <p><strong>Emergency Contact:</strong> +1234567891</p>
+                        <p><strong>Address:</strong> 123 Main St, City, State</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Appointment Details</h6>
+                        <p><strong>Date:</strong> June 4, 2025</p>
+                        <p><strong>Time:</strong> 10:00 AM</p>
+                        <p><strong>Duration:</strong> 1 hour</p>
+                        <p><strong>Status:</strong> <span class="badge badge-pending">Pending</span></p>
+                        <p><strong>Type:</strong> Initial Consultation</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Patient Concerns</h6>
+                        <p>Red, itchy skin for a week. Worse after sun exposure. Experiencing flaky patches and mild burning sensation. Skin has become more sensitive to touch.</p>
+                        
+                        <h6 class="mt-3">Symptoms</h6>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span class="badge badge-outline">Flaky patches</span>
+                            <span class="badge badge-outline">Mild burning</span>
+                            <span class="badge badge-outline">Skin sensitivity</span>
+                            <span class="badge badge-outline">Itching</span>
+                            <span class="badge badge-outline">Redness</span>
+                        </div>
+                        
+                        <h6>Medical History</h6>
+                        <p class="text-muted">No known allergies. Previous skin conditions: mild eczema in childhood.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Start Consultation</button>
+                <button type="button" class="btn btn-primary">Update Status</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateStatus(appointmentId, status) {
+    if (confirm('Are you sure you want to update the status to ' + status + '?')) {
+        fetch('/Doctor/UpdateAppointmentStatus', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'appointmentId=' + appointmentId + '&status=' + status
+        }).then(() => {
+            location.reload();
+        });
+    }
+}
+
+function viewDetails(appointmentId) {
+    // Implementation for viewing appointment details
+    new bootstrap.Modal(document.getElementById('appointmentDetailsModal')).show();
+}
+
+function startConsultation(appointmentId) {
+    // Implementation for starting consultation
+    alert('Start consultation for appointment ID: ' + appointmentId);
+}
+
+function reschedule(appointmentId) {
+    // Implementation for rescheduling appointment
+    alert('Reschedule appointment with ID: ' + appointmentId);
+}
+
+function cancelAppointment(appointmentId) {
+    if (confirm('Are you sure you want to cancel this appointment?')) {
+        updateStatus(appointmentId, 'Cancelled');
+    }
+}
+</script>

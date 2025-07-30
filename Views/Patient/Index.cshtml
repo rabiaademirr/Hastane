@@ -1,0 +1,123 @@
+@{
+    ViewData["Title"] = "Patient Dashboard";
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Total Appointments</div>
+    </div>
+    <div class="stat-card success">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Upcoming Appointments</div>
+    </div>
+    <div class="stat-card warning">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Completed Appointments</div>
+    </div>
+    <div class="stat-card danger">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Cancelled Appointments</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Recent Appointments</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Doctor</th>
+                                <th>Specialty</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr. Ralph Edwards</td>
+                                <td>Dermatologist</td>
+                                <td>June 4, 2025</td>
+                                <td>10:00 AM</td>
+                                <td>
+                                    <span class="badge badge-pending">Pending</span>
+                                </td>
+                                <td>
+                                    <a href="/Patient/CancelAppointment/1" class="btn btn-sm btn-danger" 
+                                       onclick="return confirm('Are you sure you want to cancel this appointment?')">
+                                        Cancel
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Ronald Richards</td>
+                                <td>Neurologist</td>
+                                <td>May 28, 2025</td>
+                                <td>02:30 PM</td>
+                                <td>
+                                    <span class="badge badge-completed">Completed</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline">View Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/Patient/BookAppointment" class="btn btn-primary">
+                        <i class="fas fa-calendar-plus"></i>
+                        Book New Appointment
+                    </a>
+                    <a href="/Patient/DoctorList" class="btn btn-success">
+                        <i class="fas fa-user-md"></i>
+                        Find Doctors
+                    </a>
+                    <a href="/Patient/MyAppointments" class="btn btn-warning">
+                        <i class="fas fa-calendar-check"></i>
+                        My Appointments
+                    </a>
+                    <a href="/Patient/Profile" class="btn btn-outline">
+                        <i class="fas fa-user"></i>
+                        My Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title">Upcoming Appointment</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="https://via.placeholder.com/80x80" alt="Dr. Ralph Edwards" class="rounded-circle mb-3">
+                    <h6>Dr. Ralph Edwards</h6>
+                    <p class="text-muted mb-2">Dermatologist</p>
+                    <p class="mb-2"><strong>Date:</strong> June 4, 2025</p>
+                    <p class="mb-3"><strong>Time:</strong> 10:00 AM</p>
+                    <div class="d-grid">
+                        <a href="/Patient/DoctorDetail/1" class="btn btn-sm btn-outline">View Doctor Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
